@@ -15,7 +15,7 @@ public class Individual {
          this.bags=bags;
          Random random=new Random();
          for(int i=0;i<sumBags;i++){
-             genes[i]=random.nextInt(2);       //random generate genes,"0" or "1"
+             genes[i]=random.nextInt(2);       //genetic code: random generate genes,"0" or "1"
          }
      }
 
