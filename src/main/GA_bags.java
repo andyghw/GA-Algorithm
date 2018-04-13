@@ -5,9 +5,15 @@ public class GA_bags {
     private Population population;
     private int fittest;
     private List<Individual> offsprings;
+    private int sumBags;
+    private int maxWeight;
+    private Bag[] bags;
 
     public GA_bags(int n,int sumBags,int maxWeight,Bag[] bags){
         this.population=new Population(n,sumBags,maxWeight,bags);
+        this.sumBags=sumBags;
+        this.maxWeight=maxWeight;
+        this.bags=bags;
     }
 
     public Population getPopulation() {
@@ -24,16 +30,10 @@ public class GA_bags {
         Comparator<Individual> order = (Individual i1, Individual i2) -> {            //redefine the comparator of PQ
                 double numbera = i1.calculteFitness();
                 double numberb = i2.calculteFitness();
-                if (numberb > numbera) {
-                    return 1;
-                }
-                else if (numberb < numbera) {
-                    return -1;
-                }
-                else {
-                    return 0;
-                }
-            };
+                if (numberb > numbera) return 1;
+                else if (numberb < numbera) return -1;
+                else return 0;
+        };
         Queue<Individual> pq=new PriorityQueue<>(order);
         List<Individual> individuals=population.getIndividuals();
         for(int i=0;i<individuals.size();i++) pq.add(individuals.get(i));
@@ -48,10 +48,16 @@ public class GA_bags {
     public void crossover(){
         Random random=new Random();
         List<Individual> individuals=population.getIndividuals();
-        offsprings=new ArrayList<>(individuals);          //Intialize the offsprings, simply copy first
-        int pos=random.nextInt(individuals.get(0).getGenes().length);    //decide the position of genes to crossover
+        //copy the genes of individuals to the offsprings
+        offsprings=new ArrayList<>();
+        for(int i=0;i<individuals.size();i++){
+            Individual individual=new Individual(sumBags,maxWeight,bags);
+            for(int j=0;j<individual.getGenes().length;j++) individual.getGenes()[j]=individuals.get(i).getGenes()[j];
+            offsprings.add(individual);
+        }
+        int pos=random.nextInt(offsprings.get(0).getGenes().length);    //decide the position of genes to crossover
         for(int i=0;i<offsprings.size()-1;i+=2){         //1st fittest pair with 2nd fittest,3nd with the 4th...
-            for(int j=0;j<pos;j++){
+            for(int j=0;j<=pos;j++){
                 int tem=offsprings.get(i).getGenes()[j];
                 offsprings.get(i).getGenes()[j]=offsprings.get(i+1).getGenes()[j];
                 offsprings.get(i+1).getGenes()[j]=tem;
@@ -63,7 +69,7 @@ public class GA_bags {
     public void mutatation(){
         Random random=new Random();
         for(int i=0;i<offsprings.size();i++) {
-            if(Math.random()>0.000001) continue;                                  //the rate to happen mutation
+            if(Math.random()>0.001) continue;                                  //the rate to happen mutation
             int mutPos = random.nextInt(offsprings.get(i).getGenes().length);    //the position of genes to happen matation
             int[] genes = offsprings.get(i).getGenes();
             if (genes[mutPos] == 1) genes[mutPos] = 0;
