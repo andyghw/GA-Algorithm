@@ -4,9 +4,8 @@ We chose the typical knapsack problem. For example, there are many bags and each
 The project is composed of three parts below: 
 First, the GA algorithm part which is used to solve the problem. 
 Second, the unit tests part which are used to verify if the functions like selection, crossover or mutation works successfully.
-Third, the interface part which I used Swing to make the input and result clearer.
+Third, the interface part which I used Swing to make the input and result clearer. To run it, you need to run the MainFrame.java file.
 
 Hope you appreciate my project.
 
-Thank you,
 Hanwen Guo
