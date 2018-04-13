@@ -109,7 +109,7 @@ public class GA_bags {
             bags[i].setWeight(bagWeight[i]);
         }
         GA_bags ga=new GA_bags(10000,sumBags,maxWeight,bags);
-        int generationCount=0;
+        int generationCount=1;
         for(int x=0;x<100;x++){
             ga.logging(generationCount);
             ga.selection();
