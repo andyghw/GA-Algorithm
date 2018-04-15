@@ -1,5 +1,6 @@
 # GA-Algorithm(Knapsack problem)
 Team member: Hanwen Guo&&Yizhe Liu
+
 We chose the typical knapsack problem. For example, there are many bags and each of them has different value and weight. Given a limited max weight, we put these bags into our knapsack. So what is the biggest total value?
 
 The project is composed of three parts below: 
