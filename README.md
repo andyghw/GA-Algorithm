@@ -11,6 +11,8 @@ Second, the unit tests part which are used to verify if the functions like selec
 
 Third, the interface part which I used Swing to make the input and result clearer. To run it, you need to run the MainFrame.java file.
 
+Other details about this project are recorded in the report.
+
 Hope you appreciate my project.
 
 Hanwen Guo
