@@ -5,7 +5,7 @@ The project is composed of three parts below:
 
 First, the GA algorithm part which is used to solve the problem. 
 
-Second, the unit tests part which are used to verify if the functions like selection, crossover or mutation works successfully.
+Second, the unit tests part which are used to verify if the functions like selection, crossover or mutation works successfully. To run the unit tests, you have to add dependency of junit to the local lib.
 
 Third, the interface part which I used Swing to make the input and result clearer. To run it, you need to run the MainFrame.java file.
 
